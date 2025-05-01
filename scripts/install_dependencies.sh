@@ -1,13 +1,13 @@
 #!/bin/bash
 cd /home/ec2-user/app
 
-# Install Node.js 18 via NodeSource
-curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
-sudo yum install -y nodejs
+# Install Node.js 18 via DNF (native support in AL2023)
+sudo dnf module enable nodejs:18 -y
+sudo dnf install nodejs -y
 
-# Verify
+# Verify installation
 node -v
 npm -v
 
-# Install dependencies
+# Install project dependencies
 npm ci
