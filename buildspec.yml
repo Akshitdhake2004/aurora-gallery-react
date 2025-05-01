@@ -17,7 +17,9 @@ phases:
     commands:
       - echo "Building the project..."
       - npm run build
+      - echo "Copying deployment files into dist..."
       - cp appspec.yml dist/
+      - cp -r scripts dist/
 
 artifacts:
   files:
