@@ -3,14 +3,15 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Installing Node.js via n..."
-      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-      - export NVM_DIR="$HOME/.nvm"
-      - source $NVM_DIR/nvm.sh
-      - nvm install 18.18.2
-      - nvm use 18.18.2
-      - node -v
-      - npm ci
+      - echo "Installing Node.js via nvm..."
+      - |
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        nvm install 18.18.2
+        nvm use 18.18.2
+        node -v
+        npm ci
 
   build:
     commands:
@@ -21,4 +22,4 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: .
+  base-directory: dist
