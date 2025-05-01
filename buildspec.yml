@@ -17,7 +17,7 @@ phases:
     commands:
       - echo "Building the project..."
       - npm run build
-      - cp appSpec.yml dist/
+      - cp appspec.yml dist/
 
 artifacts:
   files:
