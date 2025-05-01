@@ -2,19 +2,23 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 18
     commands:
-      - echo Installing dependencies...
-      - npm ci  # Faster and cleaner for CI environments
+      - echo "Installing Node.js via n..."
+      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+      - export NVM_DIR="$HOME/.nvm"
+      - source $NVM_DIR/nvm.sh
+      - nvm install 18.18.2
+      - nvm use 18.18.2
+      - node -v
+      - npm ci
 
   build:
     commands:
-      - echo Building the project...
-      - npm run build  # Change if your build script has a different name
+      - echo "Building the project..."
+      - npm run build
       - cp appspec.yml dist/
 
 artifacts:
   files:
     - '**/*'
-  base-directory: dist  # Change this to your actual build output folder if different
+  base-directory: dist
