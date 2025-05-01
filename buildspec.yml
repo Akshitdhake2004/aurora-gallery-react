@@ -12,6 +12,7 @@ phases:
     commands:
       - echo Building the project...
       - npm run build  # Change if your build script has a different name
+      - cp appspec.yml dist/
 
 artifacts:
   files:
