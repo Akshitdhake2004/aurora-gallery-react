@@ -1,12 +1,13 @@
 #!/bin/bash
 cd /home/ec2-user/app
 
-# Source the NVM script
-source /home/ec2-user/.nvm/nvm.sh
+# Install Node.js 18 via NodeSource
+curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
+sudo yum install -y nodejs
 
-# Use Node.js version 18 for building
-nvm use 18
+# Verify
+node -v
+npm -v
 
-# Install dependencies and build
-npm install
-npm run build
+# Install dependencies
+npm ci
