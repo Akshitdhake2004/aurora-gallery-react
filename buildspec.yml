@@ -3,15 +3,17 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 22
+      nodejs: 18
     commands:
       - echo Installing dependencies...
-      - npm install
+      - npm ci  # Faster and cleaner for CI environments
+
   build:
     commands:
-      - echo Building the app...
-      - npm run build
+      - echo Building the project...
+      - npm run build  # Change if your build script has a different name
+
 artifacts:
   files:
     - '**/*'
-  base-directory: dist
+  base-directory: dist  # Change this to your actual build output folder if different
